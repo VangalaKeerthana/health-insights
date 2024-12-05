@@ -1,6 +1,7 @@
 import streamlit as st
 import mysql.connector
 import pandas as pd
+import os
 
 # Database connection function
 def create_connection():
