@@ -5,15 +5,12 @@ import os
 import mysql.connector
 
 
-# Database connection function
 def create_connection():
-
-# Use environment variables for connection details
-    db_host = os.getenv("DB_HOST", "localhost")
-    db_port = os.getenv("DB_PORT", "3306")
-    db_user = os.getenv("DB_USER", "root")
-    db_password = os.getenv("DB_PASSWORD", "")
-    db_name = os.getenv("DB_NAME", "your_database_name")
+    db_host = os.getenv("DB_HOST")
+    db_port = os.getenv("DB_PORT")
+    db_user = os.getenv("DB_USER")
+    db_password = os.getenv("DB_PASSWORD")
+    db_name = os.getenv("DB_NAME")
 
     connection = mysql.connector.connect(
         host=db_host,
@@ -22,7 +19,7 @@ def create_connection():
         password=db_password,
         database=db_name
     )
-
+    return connection
 # Function to fetch data from the database
 def fetch_data(query):
     try:
