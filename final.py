@@ -4,22 +4,19 @@ import pandas as pd
 import os
 import mysql.connector
 
-
 def create_connection():
-    db_host = os.getenv("DB_HOST")
-    db_port = os.getenv("DB_PORT")
-    db_user = os.getenv("DB_USER")
-    db_password = os.getenv("DB_PASSWORD")
-    db_name = os.getenv("DB_NAME")
-
-    connection = mysql.connector.connect(
-        host=mysql.railway.internala,
-        port=db_3306,
-        user=root,
-        password=FdALYQsaNPFNybNhKnTyoGkekIOZhAls,
-        database=railway
-    )
-    return connection
+    try:
+        connection = mysql.connector.connect(
+            host=os.getenv("DB_HOST"),
+            port=int(os.getenv("DB_PORT")),  # Ensure the port is an integer
+            user=os.getenv("DB_USER"),
+            password=os.getenv("DB_PASSWORD"),
+            database=os.getenv("DB_NAME")
+        )
+        return connection
+    except mysql.connector.Error as err:
+        print(f"Error: {err}")
+        return None
 # Function to fetch data from the database
 def fetch_data(query):
     try:
