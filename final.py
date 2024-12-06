@@ -6,17 +6,22 @@ import os
 # Database connection function
 def create_connection():
     
-    try:
-        connection = mysql.connector.connect(
-            host=os.getenv("DB_HOST"),         # Use environment variable for host
-            user=os.getenv("DB_USER"),         # Use environment variable for user
-            password=os.getenv("DB_PASSWORD"), # Use environment variable for password
-            database=os.getenv("DB_NAME")      # Use environment variable for database name
-        )
-        return connection
-    except mysql.connector.Error as e:
-        st.error(f"Database connection failed: {e}")
-        return None
+import mysql.connector
+
+# Use environment variables for connection details
+    db_host = os.getenv("DB_HOST", "localhost")
+    db_port = os.getenv("DB_PORT", "3306")
+    db_user = os.getenv("DB_USER", "root")
+    db_password = os.getenv("DB_PASSWORD", "")
+    db_name = os.getenv("DB_NAME", "your_database_name")
+
+    connection = mysql.connector.connect(
+        host=db_host,
+        port=db_port,
+        user=db_user,
+        password=db_password,
+        database=db_name
+    )
 
 # Function to fetch data from the database
 def fetch_data(query):
