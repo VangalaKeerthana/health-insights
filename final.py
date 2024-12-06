@@ -2,11 +2,11 @@ import streamlit as st
 import mysql.connector
 import pandas as pd
 import os
+import mysql.connector
+
 
 # Database connection function
 def create_connection():
-    
-import mysql.connector
 
 # Use environment variables for connection details
     db_host = os.getenv("DB_HOST", "localhost")
