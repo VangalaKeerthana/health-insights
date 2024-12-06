@@ -13,11 +13,11 @@ def create_connection():
     db_name = os.getenv("DB_NAME")
 
     connection = mysql.connector.connect(
-        host=db_host,
-        port=db_port,
-        user=db_user,
-        password=db_password,
-        database=db_name
+        host=mysql.railway.internala,
+        port=db_3306,
+        user=root,
+        password=FdALYQsaNPFNybNhKnTyoGkekIOZhAls,
+        database=railway
     )
     return connection
 # Function to fetch data from the database
