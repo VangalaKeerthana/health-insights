@@ -7,11 +7,11 @@ import mysql.connector
 def create_connection():
     try:
         connection = mysql.connector.connect(
-            host=os.getenv("DB_HOST"),
-            port=int(os.getenv("DB_PORT")),  # Ensure the port is an integer
-            user=os.getenv("DB_USER"),
-            password=os.getenv("DB_PASSWORD"),
-            database=os.getenv("DB_NAME")
+            host="junction.proxy.rlwy.net",
+            port=20245, # Ensure the port is an integer
+            user="root",
+            password="FdALYQsaNPFNybNhKnTyoGkekIOZhAls",
+            database="railway"
         )
         return connection
     except mysql.connector.Error as err:
